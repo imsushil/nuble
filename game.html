@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- jquery is used just to show bootstrap modal, everything else is in javascript -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<link type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+		<link href="assets/game.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="header">NUBLE</div>
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-12 col-md-3 col-lg-2 pt-3">
+					<div>
+						<p><u><strong>Instructions</strong></u>: To start the game, select difficulty level first and then click <strong>NEW GAME</strong>. Use arrow keys <strong>Up/Down/Left/Right</strong> to play.</p>
+						<p>By default, <strong>Easy</strong> is the difficulty level.</p>
+					</div>
+					<hr/>
+					<div>
+						<strong>MOVES</strong>: <span id="moves_count">0</span></div>
+					<div>
+						<strong>TIME</strong>: <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+					</div>
+					<button type="button" class="btn btn-block" id="undo-btn">UNDO</button>
+					<button type="button" class="btn btn-block" id="new-game-btn">NEW GAME</button>
+					<div class="moves-container mt-3">
+						<strong>YOUR MOVES</strong>
+						<div id="moves"></div>
+					</div>
+				</div>
+				<div class="col col-md col-lg text-center pt-3">
+					<table id="board"></table>
+					<div>
+						<div class="level">DIFFICULTY LEVEL</div>
+						<div class="custom-input-container">
+							<button type="button" class="btn" id="sub">-</button>
+							<span id="size"></span>
+							<button type="button" class="btn" id="add">+</button>
+						</div>
+						<div class="level-btns">
+							<div class="row justify-content-center">
+								<div class="col-6 col-md-3 col-lg-2">
+									<button type="button" class="btn selected" id="easy-btn">EASY</button>
+								</div>
+								<div class="col-6 col-md-3 col-lg-2">
+									<button type="button" class="btn" id="medium-btn">MEDIUM</button>
+								</div>
+								<div class="col-6 col-md-3 col-lg-2">
+									<button type="button" class="btn" id="hard-btn">HARD</button>
+								</div>
+								<div class="col-6 col-md-3 col-lg-2">
+									<button type="button" class="btn" id="custom-btn">CUSTOM</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Congratulations!</h4>
+					</div>
+					<div class="modal-body">
+						<p>You did a great job. You took <strong id="noOfMoves"></strong> moves and <strong id="time_taken"></strong> to solve the puzzle.</p>
+						<p>Wanna play again?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="play-again" data-dismiss="modal">Play again!</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="assets/game.js" type="module"></script>
+

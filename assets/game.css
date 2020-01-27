@@ -1,0 +1,167 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+p {
+	margin: 0.5rem auto;
+}
+
+@media only screen and (min-width : 1200px) {
+    .container { max-width: 1600px; }
+}
+
+#board {
+	background-color: #eee;
+	border-radius: 5px;
+	margin: auto;
+}
+#board tr td {
+	background-color: #fff;
+	color: #000;
+	border-radius: 5px;
+	height: 3rem;
+	width: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	font-size: 1.5rem;
+}
+td.active {
+	border: 2px solid skyblue;
+}
+.container {
+	height: calc(100vh - 48px);
+	padding-top: 1rem;
+	/* height: calc(100vh - 100px); */
+	/* margin: 0% 5%; */
+}
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background-color: #00d1b2; */
+	background-color: #fa745e;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 500;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 5px;
+}
+.row {
+	/* display: flex;
+	width: 100%;
+	height: 100%; */
+	height: 100%;
+}
+.btn {
+	border-radius: 2px;
+	outline: 0;
+}
+.btn:disabled {
+	cursor: not-allowed;
+}
+.btn-block {
+	width: 100%;
+}
+#new-game-btn {
+	background-color: #00d1b2;
+	border: 1px solid #00d1b2;
+	color: #fff;
+	margin-top: 1rem;
+}
+#undo-btn {
+	background-color: #ffd83d;
+	border: 1px solid #ffd83d;
+	color: #000;
+	margin-top: 1rem;
+}
+#easy-btn {
+	color: cornflowerblue;
+	border: 1px solid cornflowerblue;
+}
+#easy-btn:not(:disabled):hover, #easy-btn.selected {
+	color: #fff;
+	background-color: cornflowerblue;
+}
+#medium-btn {
+	color: orange;
+	border: 1px solid orange;
+}
+#medium-btn:not(:disabled):hover, #medium-btn.selected {
+	color: #fff;
+	background-color: orange;
+}
+#hard-btn {
+	color: red;
+	border: 1px solid red;
+}
+#hard-btn:not(:disabled):hover, #hard-btn.selected {
+	color: #fff;
+	background-color: red;
+}
+#custom-btn {
+	color: rebeccapurple;
+	border: 1px solid rebeccapurple;
+}
+#custom-btn:hover, #custom-btn.selected {
+	color: #fff;
+	background-color: rebeccapurple;
+}
+.level {
+	margin-top: 2rem;
+	text-align: center;
+	color: #fa745e;
+	font-weight: 600;
+}
+.level::before, .level::after {
+	content: ' ---------- ';
+}
+.level-btns button {
+	margin: 0.5rem 1rem;
+	width: 5.5rem;
+}
+.level-btns:first-child {
+	margin-left: 0rem;
+}
+.level-btns:last-child {
+	margin-right: 0rem;
+}
+.moves-container {
+	border: 1px solid #fa735e38;
+	background-color: rgba(250, 116, 94, 0.1);
+	padding: 0.5rem 1rem;
+	box-sizing: border-box;
+	overflow-y: auto;
+	min-height: 30vh;
+	max-height: 40vh;
+}
+input[name="size"] {
+	border: none;
+	width: 20px;
+	outline: 0;
+	
+}
+#boardSize-container {
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	padding-left: 5px;
+}
+.custom-input-container {
+	margin: 1rem auto;
+	text-align: center;
+}
+button#add, button#sub {
+	margin: 0rem 0.5rem;
+	width: 40px;
+	padding: 10px;
+	background-color: #00d1b2;
+	border: none;
+	color: #fff;
+	display: none;
+}
+button.close {
+	position: absolute;
+	right: 1rem;
+}
