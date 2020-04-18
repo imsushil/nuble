@@ -11,6 +11,7 @@
 		background-color: var(--main-primary);
 		overflow-y: hidden;
 		transition: all 500ms;
+		padding: 0rem 2rem;
 	}
 	.flash.off {
 		transform: translate(0, -100%);
