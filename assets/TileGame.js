@@ -43,7 +43,6 @@ export class TileGame {
 		this.focusTile();
 
 		// start the time
-		// game.timer.stop();
 		this.timer = new Timer();
 
 		/* Setting gameStarted flag to true after shuffle.
@@ -57,7 +56,6 @@ export class TileGame {
 	/* Renders Puzzle Board and the Moves */
 	render() {
 		this.renderBoard();
-		this.renderMoves();
 		document.querySelector("#moves_count").innerHTML = this.noOfMoves;
 		if(this.trackMoves.length === 0) {
 			document.querySelector("#undo-btn").setAttribute('disabled', "disabled");
@@ -93,15 +91,6 @@ export class TileGame {
 			render_puzzle += "</tr>";
 		}
 		document.querySelector("#board").innerHTML = render_puzzle;
-	}
-
-	renderMoves() {
-		let render_moves = "";
-		for(let i=0; i<this.trackMoves.length; ++i) {
-			let new_pos = this.trackMoves[i].new_pos;
-			render_moves += `<div>${i+1}) Tile${this.trackMoves[i].tile} to (${new_pos[0]},${new_pos[1]})</div>`;
-		}
-		document.querySelector("#moves").innerHTML = render_moves;
 	}
 
 	moveRight() {
@@ -227,7 +216,8 @@ export class TileGame {
 			this.undoSwap(new_pos, old_pos);
 			this.noOfMoves--;
 			this.render();
-			document.querySelector("#i_"+old_pos[0]+"j_"+old_pos[1]).focus();
+			this.currentTilePosition = [old_pos[0], old_pos[1]];
+			this.focusTile();
 		}
 	}
 
@@ -253,8 +243,18 @@ export class TileGame {
 			let mm = document.querySelector("#minutes").innerHTML;
 			let ss = document.querySelector("#seconds").innerHTML;
 			document.querySelector("#noOfMoves").innerHTML = this.noOfMoves;
-			document.querySelector("#time_taken").innerHTML = `${hh} hours ${mm} minutes ${ss} seconds`;
-			$("#myModal").modal('show');
+			let timeTaken = ``;
+			if(parseInt(hh) > 0) {
+				timeTaken = `${hh} hour(s) `;
+			}
+			if(parseInt(mm) > 0) {
+				timeTaken += `${mm} minute(s) `;
+			}
+			if(parseInt(ss) > 0) {
+				timeTaken += `${ss} second(s)`;
+			}
+			document.querySelector("#time_taken").innerHTML = timeTaken;
+			$("#play-again-modal").modal('show');
 		}
 	}
 

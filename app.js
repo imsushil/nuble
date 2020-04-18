@@ -12,6 +12,7 @@ app.get('/', function(request, response){
     response.sendFile(path.join(__dirname + '/game.html'));
 });
 
-app.listen(process.env.PORT || 8080, () => {
-	console.log(`Server is running at http://localhost:${process.env.PORT}`);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+	console.log(`Server is running at http://localhost:${PORT}`);
 });

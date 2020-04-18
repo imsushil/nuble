@@ -1,10 +1,18 @@
+
+@import "./flash.css";
+@import "./game-screen.css";
+
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Bangers', cursive;
 	margin: 0;
 	padding: 0;
+	letter-spacing: 1px;
 }
 p {
 	margin: 0.5rem auto;
+}
+button {
+	box-shadow: none !important;
 }
 
 .message-mobile {
@@ -25,53 +33,14 @@ p {
 	}
 }
 
-@media only screen and (min-width : 1200px) {
+/* @media only screen and (min-width : 1200px) {
     .container { max-width: 1600px; }
-}
+} */
 
-#board {
-	background-color: #eee;
-	border-radius: 5px;
-	margin: auto;
-}
-#board tr td {
-	background-color: #fff;
-	color: #000;
-	border-radius: 5px;
-	height: 3rem;
-	width: 3rem;
-	line-height: 3rem;
-	text-align: center;
-	font-size: 1.5rem;
-}
-td.active {
-	border: 2px solid skyblue;
-}
-.container {
-	height: calc(100vh - 48px);
-	padding-top: 1rem;
-	/* height: calc(100vh - 100px); */
-	/* margin: 0% 5%; */
-}
-.header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #fa745e;
-	color: #fff;
-	font-size: 2rem;
-	font-weight: 500;
-}
-table {
-	border-collapse: separate;
-	border-spacing: 5px;
-}
-table tr td:focus {
-	outline: 2px solid #00d1b2;
-}
-.row {
+
+/* .row {
 	height: 100%;
-}
+} */
 .btn {
 	border-radius: 2px;
 	outline: 0;
@@ -81,18 +50,6 @@ table tr td:focus {
 }
 .btn-block {
 	width: 100%;
-}
-#new-game-btn {
-	background-color: #00d1b2;
-	border: 1px solid #00d1b2;
-	color: #fff;
-	margin-top: 1rem;
-}
-#undo-btn {
-	background-color: #ffd83d;
-	border: 1px solid #ffd83d;
-	color: #000;
-	margin-top: 1rem;
 }
 #easy-btn {
 	color: cornflowerblue;
@@ -181,4 +138,9 @@ button#add, button#sub {
 button.close {
 	position: absolute;
 	right: 1rem;
+}
+
+.btn-primary {
+	background-color: var(--btn-primary) !important;
+	border-color: var(--btn-primary) !important;
 }

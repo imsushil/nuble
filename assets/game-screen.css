@@ -1,0 +1,61 @@
+.game-screen {
+	transition: all 500ms;
+	height: 0;
+	overflow-y: hidden;
+}
+.game-screen.on {
+	height: 100vh;
+}
+.info {
+	height: 15vh;
+	text-align: center;
+}
+
+#board {
+	background-color: #eee;
+	border-radius: 5px;
+	margin: auto;
+}
+#board tr td {
+	background-color: #fff;
+	color: #000;
+	border-radius: 5px;
+	height: 3rem;
+	width: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	font-size: 1.5rem;
+}
+td.active {
+	border: 2px solid skyblue;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 5px;
+}
+table tr td:focus {
+	outline: 2px solid #00d1b2;
+}
+
+#undo-btn {
+	background-color: var(--btn-primary);
+	border: 1px solid var(--btn-primary);
+	color: #000;
+}
+.quit-game {
+	display: inline-block;
+	text-align: center;
+	line-height: 2rem;
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	font-size: 1.3rem;
+	margin-right: 1rem;
+	color: #555;
+	cursor: pointer;
+	background-color: #fafafa;
+}
+.quit-game:hover{
+	background-color: #f5f5f5;
+	color: #000;
+}

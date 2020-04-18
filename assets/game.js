@@ -1,9 +1,15 @@
-import {TileGame} from './TileGame.js';
+import { TileGame } from './TileGame.js';
 
 /* Main  */
-let	size = 3; // default size is 3X3
-let sizeLimit = 15;
-let game = new TileGame(size);
+let difficulty = 'Easy';
+const DEFAULT_SIZE = 3;
+const MIN_SIZE_LIMIT = 3;
+let size = DEFAULT_SIZE; // default size is 3X3
+let sizeLimit = 10;
+let limitReachedMessage = 'Calm down! Genius.';
+let miniLimitReachedMessage = 'Seriously! You wanna play 2 X 2. Come on! It will be too easy for you. :-)';
+let game;
+
 
 let newGame = () => {
 	game = new TileGame(size);
@@ -11,79 +17,98 @@ let newGame = () => {
 };
 
 // render size updates
-let updateSize = (val) => {
+let updateSizeAndRender = (val) => {
 	size = val;
 	document.querySelector("#size").innerHTML = size + " X " + size;
 }
-
+updateSizeAndRender(DEFAULT_SIZE);
 /* 	Toggling buttons(for custom N x N)
  *	Method will be called with values "hide" or "show"
  *	Show buttons only when custom button is clicked 
  */
 let toggleSizeButtons = (value) => {
 	document.querySelectorAll("#add, #sub").forEach(item => {
-		if(value === "hide"){
-			item.style.display="none";
+		if (value === "hide") {
+			item.style.display = "none";
 		} else {
-			item.style.display="inline-block";
+			item.style.display = "inline-block";
 		}
-		
+
 	});
 };
 
-document.querySelectorAll(".level-btns .btn").forEach(item => {
-	item.addEventListener('click', (event) => {
-		item.classList.add('selected');
-		document.querySelectorAll(".level-btns .btn").forEach(el => {
-			if(event.target !== el) el.classList.remove('selected');
-		});
-		toggleSizeButtons("hide");
-	})
+document.addEventListener('click', (e) => {
+	e.stopPropagation();
+	e.preventDefault();
+	if(game) {
+		game.focusTile();
+	}
 });
 
-document.querySelector("#undo-btn").addEventListener('click', () => {
+/* User click X to quit the game, show confirmation box */
+document.querySelector(".quit-game").addEventListener('click', () => {
+	$("#quit-game-confirmation").modal("show");
+});
+
+/* Quit game confirmed button */
+document.querySelector("#quit-game-confirmed").addEventListener('click', () => {
+	game = null;
+	document.querySelector(".flash").classList.remove('off');
+	document.querySelector(".game-screen").classList.toggle('on');
+});
+
+/* Difficulty level */
+document.querySelectorAll(".dropdown-menu>a.dropdown-item").forEach(item => {
+	item.addEventListener('click', (e) => {
+		difficulty = e.target.innerHTML;
+		document.querySelector(".difficulty-lvl").innerHTML = difficulty;
+		toggleSizeButtons("hide");
+		if (difficulty === 'Easy') {
+			updateSizeAndRender(3);
+		} else if (difficulty === 'Medium') {
+			updateSizeAndRender(5);
+		} else if (difficulty === 'Hard') {
+			updateSizeAndRender(7);
+		} else {
+			toggleSizeButtons("show");
+		}
+	});
+})
+
+/* Undo */
+document.querySelector("#undo-btn").addEventListener('click', (e) => {
+	e.stopPropagation();
 	game.undo();
 });
-document.querySelector("#new-game-btn").addEventListener('click', () => {
+
+/* Start new game */
+document.querySelector("#start-game").addEventListener('click', () => {
+	document.querySelector(".game-screen").classList.toggle('on');
+	document.querySelector(".flash").classList.toggle('off');
 	newGame();
 });
+
+/* User has completed the game and want to play again, take the user to the difficuly selection screen */
 document.querySelector("#play-again").addEventListener("click", () => {
-	newGame();
+	document.querySelector(".game-screen").classList.toggle('on');
+	document.querySelector(".flash").classList.toggle('off');
 });
-
-
-/* click listeners for difficulty level buttons*/
-// easy button
-document.querySelector("#easy-btn").addEventListener('click', () => {
-	updateSize(3);
-});
-// medium button
-document.querySelector("#medium-btn").addEventListener('click', () => {
-	updateSize(5);
-});
-// Hard button
-document.querySelector("#hard-btn").addEventListener('click', () => {
-	updateSize(10);
-});
-// custom button
-document.querySelector("#custom-btn").addEventListener('click', () => {
-	toggleSizeButtons("show");
-});
-
 
 /* Add/Sub buttons for board size */
-document.querySelector("#add").addEventListener('click', () => {
-	if(size === sizeLimit) {
-		alert("Maximum limit for N is 15.");
+document.querySelector('#add').addEventListener('click', () => {
+	if (size === sizeLimit) {
+		document.querySelector('#info .modal-body').innerHTML = limitReachedMessage;
+		$("#info").modal('show');
 	} else {
-		updateSize(++size);
+		updateSizeAndRender(++size);
 	}
 });
 
 document.querySelector("#sub").addEventListener('click', () => {
-	if(size === 3) {
-		alert("Seriously! You wanna play 2 X 2. Come on! It will be too easy for you. :-)");
+	if (size === MIN_SIZE_LIMIT) {
+		document.querySelector('#info .modal-body').innerHTML = miniLimitReachedMessage;
+		$("#info").modal('show');
 	} else {
-		updateSize(--size);
+		updateSizeAndRender(--size);
 	}
 });
