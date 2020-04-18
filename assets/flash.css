@@ -1,100 +1,102 @@
 @import "./theme.css";
 
-.flash {
-	height: 100vh;
-	width: 100vw;
-	display: flex;
-	justify-content: center;
-	flex-flow: column;
-	align-items: center;
-	background-color: var(--main-primary);
-	overflow-y: hidden;
-	transition: all 500ms;
-}
-.flash.off {
-	transform: translate(0, -100%);
-	height: 0;
-}
-.flash.on {
-	transform: translate(0, 100%);
-	height: 100vh;
-}
-.logo {
-	font-family: 'Nanum Pen Script', cursive;
-	-webkit-text-stroke-width: 2px; 
-	-webkit-text-stroke-color: #fff;
-	color: var(--main-primary);
-	font-size: 6rem;
-	letter-spacing: 6px;
-	animation: fadeUp 3s ease 200ms forwards;
-	transform: translate(0, 20%);
-	transform-origin: center;
-	opacity: 0;
-	position: absolute;
-}
-
-@keyframes fadeUp {
-	0% {
-		
+@media (min-width: 768px) {
+	.flash {
+		height: 100vh;
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		flex-flow: column;
+		align-items: center;
+		background-color: var(--main-primary);
+		overflow-y: hidden;
+		transition: all 500ms;
 	}
-	20% {
-		transform: translate(0, 0);
-		text-shadow: 0px 2px 0px #fff;
-		opacity: 1;
+	.flash.off {
+		transform: translate(0, -100%);
+		height: 0;
 	}
-	40% {
-		text-shadow: 0px 2px 15px #fff;
+	.flash.on {
+		transform: translate(0, 100%);
+		height: 100vh;
 	}
-	80% {
-		transform: translate(0, 0);
-		text-shadow: 0px 2px 0px #fff;
-		opacity: 1;
-	}
-	100% {
-		transform: translate(0, 0);
+	.logo {
+		font-family: 'Nanum Pen Script', cursive;
+		-webkit-text-stroke-width: 2px; 
+		-webkit-text-stroke-color: #fff;
+		color: var(--main-primary);
+		font-size: 6rem;
+		letter-spacing: 6px;
+		animation: fadeUp 3s ease 200ms forwards;
+		transform: translate(0, 20%);
+		transform-origin: center;
 		opacity: 0;
-		visibility: hidden;
+		position: absolute;
 	}
-}
-.instructions {
-	text-align: center;
-	animation: fadeIn 1s ease 3.5s forwards;
-	opacity: 0;
-	color: #fff;
-}
-.instructions * {
-	letter-spacing: 3px;
-	font-size: 1.5rem;
-	font-weight: 400;
-}
-.instructions .title {
-	font-size: 2rem;
-	text-decoration: underline;
-}
-button.difficulty-lvl {
-	box-shadow: none !important;
-	border: 2px solid #fff;
-	width: 10rem;
-}
-a.dropdown-item {
-	cursor: pointer;
-}
-button#start-game {
-	background-color: var(--btn-primary);
-	border: 1px solid var(--btn-primary);
-	color: #fff;
-	margin-top: 1rem;
-}
-
-@keyframes fadeIn {
-	0% {
-		display: none;
+	
+	@keyframes fadeUp {
+		0% {
+			
+		}
+		20% {
+			transform: translate(0, 0);
+			text-shadow: 0px 2px 0px #fff;
+			opacity: 1;
+		}
+		40% {
+			text-shadow: 0px 2px 15px #fff;
+		}
+		80% {
+			transform: translate(0, 0);
+			text-shadow: 0px 2px 0px #fff;
+			opacity: 1;
+		}
+		100% {
+			transform: translate(0, 0);
+			opacity: 0;
+			visibility: hidden;
+		}
 	}
-	100% {
-		display: block;
-		opacity: 1;
+	.instructions {
+		text-align: center;
+		animation: fadeIn 1s ease 3.5s forwards;
+		opacity: 0;
+		color: #fff;
 	}
-}
-.black {
-	color: #000;
+	.instructions * {
+		letter-spacing: 3px;
+		font-size: 1.5rem;
+		font-weight: 400;
+	}
+	.instructions .title {
+		font-size: 2rem;
+		text-decoration: underline;
+	}
+	button.difficulty-lvl {
+		box-shadow: none !important;
+		border: 2px solid #fff;
+		width: 10rem;
+	}
+	a.dropdown-item {
+		cursor: pointer;
+	}
+	button#start-game {
+		background-color: var(--btn-primary);
+		border: 1px solid var(--btn-primary);
+		color: #fff;
+		margin-top: 1rem;
+	}
+	
+	@keyframes fadeIn {
+		0% {
+			display: none;
+		}
+		100% {
+			display: block;
+			opacity: 1;
+		}
+	}
+	.black {
+		color: #000;
+	}
 }
